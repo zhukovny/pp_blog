@@ -1,40 +1,37 @@
 import dataclasses
 
-from fastapi import FastAPI
+from fastapi import APIRouter
+from starlette.responses import JSONResponse
 
-from src.fake_db import fake_items
+from backend.fake_db import fake_items
 
-app = FastAPI()
-
-
-@app.get("/")
-async def root():
-    return {"message": "Hello, world!"}
+router = APIRouter()
 
 
-@app.get("/items/")
+@router.get("/")
 async def get_items():
-    return [
+    content = [
         dataclasses.asdict(item)
         for _, item in fake_items.items()
     ]
+    return JSONResponse(content)
 
 
-@app.get("/item/{item_id}")
+@router.get("/{item_id}")
 async def get_item(item_id: int):
     return fake_items.get(item_id)
 
 
-@app.post("/item/")
+@router.post("/")
 async def add_item():
     return
 
 
-@app.put("/item/")
+@router.put("/")
 async def update_item():
     return
 
 
-@app.delete("/item/{item_id}")
+@router.delete("/{item_id}")
 async def delete_item(item_id: int):
     return fake_items.pop(item_id)
