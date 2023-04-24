@@ -6,5 +6,5 @@
 ```
 poetry install
 poetry shell
-uvicorn src.main:app --reload 
+uvicorn backend.main:app --reload 
 ```
