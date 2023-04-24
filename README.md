@@ -1,4 +1,10 @@
 # pp_blog
 
-Just another pet project for studying FastAPI.
-In this project I try to make my own blog.
+Пробую написать что-то на FastAPI.
+
+Запуск:
+```
+poetry install
+poetry shell
+uvicorn src.main:app --reload 
+```
