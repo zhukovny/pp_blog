@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "pp_blog"
+version = "0.1.0"
+description = ""
+authors = ["zhukovny <cruvar.zhukov@yandex.ru>"]
+readme = "README.md"
+packages = [{include = "pp_blog"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.95.1"
+uvicorn = "^0.21.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
