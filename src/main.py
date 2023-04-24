@@ -12,14 +12,29 @@ async def root():
     return {"message": "Hello, world!"}
 
 
-@app.get("/posts/")
-async def get_posts():
+@app.get("/items/")
+async def get_items():
     return [
-        dataclasses.asdict(post)
-        for _, post in fake_items.items()
+        dataclasses.asdict(item)
+        for _, item in fake_items.items()
     ]
 
 
-@app.get("/post/{post_id}")
-async def get_post(post_id: int):
-    return fake_items.get(post_id)
+@app.get("/item/{item_id}")
+async def get_item(item_id: int):
+    return fake_items.get(item_id)
+
+
+@app.post("/item/")
+async def add_item():
+    return
+
+
+@app.put("/item/")
+async def update_item():
+    return
+
+
+@app.delete("/item/{item_id}")
+async def delete_item(item_id: int):
+    return fake_items.pop(item_id)
